@@ -1,12 +1,25 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
+import "./UserForm.css"
 
-const UserForm = ({getUser}) => {
+const UserForm = ({addUser,userSelected,updateUser,deselectUser}) => {
     const [first_name,setfirst_name]=useState("")
     const [last_name,setlast_name]=useState("")
     const [email,setemail]=useState("")
     const [birthday,setbirthday]=useState("")
     const [password,setpassword]=useState("")
+
+    useEffect(() => {
+        if (userSelected !== null) {
+            setfirst_name(userSelected.first_name)
+            setlast_name(userSelected.last_name)
+            setemail(userSelected.email)
+            setbirthday(userSelected.birthday)
+            setpassword(userSelected.password)
+        }else {
+            reset();
+        }
+
+    }, [userSelected])
     const submit=()=>{
         const user ={
             first_name: first_name,
@@ -15,12 +28,29 @@ const UserForm = ({getUser}) => {
             birthday: birthday,
             password: password
         }
-        axios.post("https://users-crud1.herokuapp.com/users/",user).
-        then(() => getUser())
-      .catch((error) => console.log(error.response));
-    }
+        if (userSelected !== null) {
+            alert("actualizando a "+user.first_name);
+            updateUser(user)
+            deselectUser()
+        }else{
+            alert("registrando a "+user.first_name);
+            addUser(user)
+            reset()
+        }
+        
+        }
+
+        const reset = () => {
+            setfirst_name("")
+            setlast_name("")
+            setemail("")
+            setbirthday("")
+            setpassword("")
+          };
+
     return (
-        <form onSubmit={submit}>
+        <form onSubmit={submit} className="userForm">
+            <h1>New User</h1>
             <div>
                 <label htmlFor="first_name" className="form-label">
                 first_name

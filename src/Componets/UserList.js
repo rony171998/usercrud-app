@@ -1,25 +1,38 @@
 import React from 'react';
+import "./UserList.css"
 
-const UserList = ({users}) => {
+const UserList = ({ users, removeUser, selectUser }) => {
     return (
         <div>
-            holaa
             {
-                users.map(users=>{
-                    <div  key={users.id}>
-                        hola2
-                        <p><b>Nombre: </b>{users.first_name}</p>
-                        <p><b>Apellido: </b>{users.last_name}</p>
-                        <p><b>Email: </b>{users.email}</p>
-                        <p><b>Fecha de Nacimiento: </b>{users.birthday}</p>
-                        <p><b>Contraseña: </b>{users.password}</p>
-                        <button>Eliminar</button>
-                        <button>Editar</button>
-                    </div>
-                })
+                users.length === 0 ? 
+                <div>
+                   <h1>La lista esta vacia</h1> 
+                </div>       
+                :
+                <div>
+                    <h1>Users</h1>
+                    {
+                        users.map(users => (
+                            <div key={users.id} className="userList">
+                                <p><b>Nombre: </b>{users.first_name}</p>
+                                <p><b>Apellido: </b>{users.last_name}</p>
+                                <p><b>Email: </b>{users.email}</p>
+                                <p><b>Fecha de Nacimiento: </b>{users.birthday}</p>
+                                <p><b>Contraseña: </b>{users.password}</p>
+                                <button onClick={() => removeUser(users.id)}>Eliminar</button>
+                                <button onClick={() => selectUser(users)}>Editar</button>
+                            </div>
+                        ))
+                    }
+                </div>
+                    
             }
+
+
+
         </div>
-            
+
     );
 };
 
