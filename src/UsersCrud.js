@@ -21,6 +21,7 @@ const UsersCrud = () => {
         axios.post("https://users-crud1.herokuapp.com/users/",user)
         .then((res)=> alert(res.statusText),getUser())
         .catch(error => console.log(error.response));
+        getUser()
     }
     const removeUser=(id)=>{
         axios.delete(`https://users-crud1.herokuapp.com/users/${id}/`)
@@ -33,6 +34,7 @@ const UsersCrud = () => {
         axios.put(`https://users-crud1.herokuapp.com/users/${userSelected.id}/`,user)
         .then((res)=> alert(res.statusText),getUser())
         .catch(error => console.log(error.response));
+        getUser()
         
     }
     const selectUser=(users)=>{
