@@ -1,18 +1,22 @@
 .userForm{
     background-color: greenyellow;
+    margin: 15px;
+    margin-left: 41%;
 }
 
 *{box-sizing:border-box;}
+
 
 form{
 	width:300px;
 	padding:16px;
 	border-radius:10px;
 	margin:auto;
-	background-color:#ccc;
+    background-color: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
 button {
+    margin: 6px;
     color: #ffffff;
     background-color: #24cf5f;
     padding: 12px 25px;

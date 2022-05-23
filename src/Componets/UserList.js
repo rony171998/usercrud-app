@@ -10,13 +10,12 @@ const UserList = ({ users, removeUser, selectUser }) => {
                    <h1>La lista esta vacia</h1> 
                 </div>       
                 :
-                <div>
-                    <h1>Users</h1>
+                <div className='todalista'>
+                    
                     {
                         users.map(users => (
                             <div key={users.id} className="userList">
-                                <p><b>Nombre: </b>{users.first_name}</p>
-                                <p><b>Apellido: </b>{users.last_name}</p>
+                                <p><b>Nombre: </b>{users.first_name}<b> </b>{users.last_name}</p>
                                 <p><b>Email: </b>{users.email}</p>
                                 <p><b>Fecha de Nacimiento: </b>{users.birthday}</p>
                                 <p><b>Contraseña: </b>{users.password}</p>
