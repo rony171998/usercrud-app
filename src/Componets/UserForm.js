@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import "./UserForm.css"
+
 
 const UserForm = ({ addUser, userSelected, updateUser, deselectUser,getUser }) => {
     
@@ -67,68 +67,60 @@ const UserForm = ({ addUser, userSelected, updateUser, deselectUser,getUser }) =
     }
 
     return (
-        
-        <form onSubmit={handleSubmit(submit)} className="userForm">
-            <h1>{titleform} User</h1>
-            <div>
-                <label htmlFor="first_name-input" className="form-label">
-                    first_name
-                </label>
-                <input
+       
+        <div className="col-md-4">
+                <h3>{titleform} User</h3>
+                <form onSubmit={handleSubmit(submit)}>
+                    <div className="form-group">
+                        <input
                     type="text"
-                    className='form-input'
+                    placeholder="First Name"
+                    className='form-control'
                     id='first_name-input'
                     {...register("first_name")}
                 />
-            </div>
-            <div>
-                <label htmlFor="last_name-input" className="form-label">
-                    last_name
-                </label>
-                <input
+                    </div>
+                    <div className="form-group">
+                        <input
                     type="text"
-                    className='form-input'
+                    placeholder="Last Name"
+                    className='form-control'
                     id='last_name-input'
                     {...register("last_name")}
                 />
-            </div>
-            <div>
-                <label htmlFor="email-input" className="form-label">
-                    email
-                </label>
-                <input
+                    </div>
+                    <div className="form-group">
+                        <input
                     type="text"
-                    className='form-input'
+                    placeholder="Email"
+                    className='form-control'
                     id='email-input'
                     {...register("email")}
                 />
-            </div>
-            <div>
-                <label htmlFor="birthday-input" className="form-label">
-                    birthday
-                </label>
-                <input
+                    </div>
+                    <div className="form-group">
+                    <input
                     type="date"
-                    className='form-input'
+                    placeholder="Birthday"
+                    className='form-control'
                     id='birthday-input'
                     {...register("birthday")}
                 />
-            </div>
-            <div>
-                <label htmlFor="password-input" className="form-label">
-                    password
-                </label>
-                <input
+                    </div>
+                    <div className="form-group">
+                    <input
                     type="password"
-                    className='form-input'
+                    placeholder="Password"
+                    className='form-control'
                     id='password-input'
                     {...register("password")}
                 />
+                    </div>
+                    <button className="btn btn-primary form-control" type="submit">SUBMIT</button>
+                    {/* <button onClick={resetfiel}>Limpiar</button> */}
+                </form>
             </div>
-            <button>Submit</button>
-            {/* <button onClick={resetfiel}>Limpiar</button> */}
-           
-        </form>
+         
     );
 };
 

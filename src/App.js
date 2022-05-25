@@ -1,13 +1,16 @@
 import React from 'react';
-import UsersCrud from './UsersCrud';
 import "./App.css";
+import UsersCrud from './Componets/UsersCrud';
 
 const App = () => {
+  
   return (
-    <div >
-      <UsersCrud/>
-    </div>
+    <>
+    <UsersCrud /> 
+
+    </>
+         
   );
 };
 
-export default App;<UsersCrud/>
+export default App; <UsersCrud />
