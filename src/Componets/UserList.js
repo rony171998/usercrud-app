@@ -1,8 +1,9 @@
 import React from 'react';
+import Modal from './Modal';
 
 
 
-const UserList = ({ users, removeUser, selectUser }) => {
+const UserList = ({ users, removeUser, selectUser, openModal, closeModal }) => {
 
     return (
      <>
@@ -34,7 +35,7 @@ const UserList = ({ users, removeUser, selectUser }) => {
                                         <td className="userData" name="address">{users.email}</td>
                                         <td id="tdAge" className="userData" name="age">{users.birthday}</td>
                                         <td align="center">
-                                        <button className="btn btn-success form-control" onClick={() => selectUser(users)}>EDIT</button>
+                                        <button className="btn btn-success form-control" onClick={() => selectUser(users)}>EDIT{ openModal && <Modal />}</button>
                                         </td>
                                         <td align="center">    
                                             <button className="btn btn-danger" onClick={() => removeUser(users.id)}>DELETE USER</button>

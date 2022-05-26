@@ -2,10 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UserList from './UserList';
 import UserForm from './UserForm';
+import Modal from './Modal';
 
 
 const UsersCrud = () => {
 
+    const [modal, setModal] = useState(false);
+    const [users, setUsers] = useState([])
+    const [userSelected, setUserSelected] = useState(null)
 
     useEffect(() => {
         axios.get("https://users-crud1.herokuapp.com/users/")
@@ -40,37 +44,47 @@ const UsersCrud = () => {
     }
     const selectUser = (users) => {
         setUserSelected(users)
-        
+        setModal(!modal)
     }
     const deselectUser = () => {
         setUserSelected(null)
     };
-  
-
-    const [users, setUsers] = useState([])
-    const [userSelected, setUserSelected] = useState(null)
- 
+    const modalOpen = () => {
+        setModal(!modal)
+    }
+    const modalClose = () => {
+        setModal(!modal)
+    }
 
     return (
 
         <div className="main">
             <div className="container">
                 <div className="row">
-                    <UserForm 
-                    
+                    <UserForm
+
                         addUser={addUser}
                         userSelected={userSelected}
                         updateUser={updateUser}
                         deselectuser={deselectUser}
                         getUser={getUser}
                     />
-                    <UserList 
-                    
+                    <UserList
+
                         users={users}
                         removeUser={removeUser}
                         selectUser={selectUser}
-                      
+
                     />
+                    <Modal
+                        userSelected={userSelected}
+                        updateUser={updateUser}
+                        deselectuser={deselectUser}
+                        getUser={getUser}
+                        modalOpen={modalOpen}
+                        modalClose={modalClose}
+                    />
+
                 </div>
             </div>
         </div>

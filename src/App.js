@@ -6,10 +6,8 @@ const App = () => {
   
   return (
     <>
-    <UsersCrud /> 
-
-    </>
-         
+    <UsersCrud />
+    </>     
   );
 };
 
